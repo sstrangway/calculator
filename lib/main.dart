@@ -2,6 +2,7 @@ import 'package:calculator/widgets/display.dart';
 import 'package:calculator/widgets/number_pad.dart';
 import 'package:calculator/widgets/operation_pad.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,16 +17,26 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String displayText = '';
+  String answer = '';
   void _updateDisplay(String value) {
     setState(() {
-      if ('0123456789+-/X'.indexOf(value) > -1) {
+      if ('0123456789+-/x()'.indexOf(value) > -1) {
         displayText += value;
-      }
-      else if (value == 'CLR') {
+      } else if (value == 'CLR') {
         displayText = '';
-      }
-      else {
-        displayText = 'CALCULATED';
+      } else if (value == 'DEL') {
+        displayText = displayText.substring(0, displayText.length - 1);
+      } else {
+        Parser p = new Parser();
+        Expression exp = p.parse(displayText.replaceAll('x', '*'));
+        String eval =
+            exp.evaluate(EvaluationType.REAL, new ContextModel()).toString();
+
+        if (eval.split('.')[1] == '0') {
+          answer = eval.substring(0, eval.length - 2);
+        } else {
+          answer = eval;
+        }
       }
     });
   }
@@ -38,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: Display(displayText),
+        appBar: Display(displayText, answer),
         body: Center(
             child: Row(
           children: <Widget>[

@@ -20,6 +20,7 @@ class NumberPad extends StatelessWidget {
         CalculatorButton('8', updateDisplay),
         CalculatorButton('9', updateDisplay),
         CalculatorButton('0', updateDisplay),
+        CalculatorButton('DEL', updateDisplay),
         CalculatorButton('CLR', updateDisplay),
       ],
     );

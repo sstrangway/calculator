@@ -10,10 +10,12 @@ class OperationPad extends StatelessWidget {
     return Column(
       children: <Widget>[
         CalculatorButton('/', updateDisplay),
-        CalculatorButton('X', updateDisplay),
+        CalculatorButton('x', updateDisplay),
         CalculatorButton('-', updateDisplay),
         CalculatorButton('+', updateDisplay),
         CalculatorButton('=', updateDisplay),
+        CalculatorButton('(', updateDisplay),
+        CalculatorButton(')', updateDisplay),
       ],
     );
   }
