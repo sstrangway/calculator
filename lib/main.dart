@@ -2,9 +2,13 @@ import 'package:calculator/widgets/display.dart';
 import 'package:calculator/widgets/number_pad.dart';
 import 'package:calculator/widgets/operation_pad.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // debugPaintSizeEnabled = true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -20,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   String answer = '';
   void _updateDisplay(String value) {
     setState(() {
-      if ('0123456789+-/x()'.indexOf(value) > -1) {
+      if ('0123456789+-/x().'.indexOf(value) > -1) {
         displayText += value;
       } else if (value == 'CLR') {
         displayText = '';
@@ -49,14 +53,35 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: Display(displayText, answer),
+        // appBar: Display(displayText, answer),
+        appBar: AppBar(
+          title: Text('Calculator'),
+        ),
         body: Center(
-            child: Row(
-          children: <Widget>[
-            NumberPad(_updateDisplay),
-            OperationPad(_updateDisplay)
-          ],
-        )),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Display(displayText, answer),
+              ),
+              Expanded(
+                flex: 5,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 4,
+                      child: NumberPad(_updateDisplay),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: OperationPad(_updateDisplay),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -7,11 +7,13 @@ class CalculatorButton extends StatelessWidget {
   CalculatorButton(this.text, this.updateDisplay);
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      child: Text(text),
-      onPressed: () {
-        updateDisplay(text);
-      },
+    return Expanded(
+      child: FlatButton(
+        child: Text(text),
+        onPressed: () {
+          updateDisplay(text);
+        },
+      ),
     );
   }
 }

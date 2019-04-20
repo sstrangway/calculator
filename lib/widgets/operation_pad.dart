@@ -14,8 +14,6 @@ class OperationPad extends StatelessWidget {
         CalculatorButton('-', updateDisplay),
         CalculatorButton('+', updateDisplay),
         CalculatorButton('=', updateDisplay),
-        CalculatorButton('(', updateDisplay),
-        CalculatorButton(')', updateDisplay),
       ],
     );
   }

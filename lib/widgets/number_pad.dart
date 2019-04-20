@@ -9,19 +9,56 @@ class NumberPad extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        CalculatorButton('0', updateDisplay),
-        CalculatorButton('1', updateDisplay),
-        CalculatorButton('2', updateDisplay),
-        CalculatorButton('3', updateDisplay),
-        CalculatorButton('4', updateDisplay),
-        CalculatorButton('5', updateDisplay),
-        CalculatorButton('6', updateDisplay),
-        CalculatorButton('7', updateDisplay),
-        CalculatorButton('8', updateDisplay),
-        CalculatorButton('9', updateDisplay),
-        CalculatorButton('0', updateDisplay),
-        CalculatorButton('DEL', updateDisplay),
-        CalculatorButton('CLR', updateDisplay),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CalculatorButton('7', updateDisplay),
+              CalculatorButton('8', updateDisplay),
+              CalculatorButton('9', updateDisplay),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CalculatorButton('4', updateDisplay),
+              CalculatorButton('5', updateDisplay),
+              CalculatorButton('6', updateDisplay),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CalculatorButton('1', updateDisplay),
+              CalculatorButton('2', updateDisplay),
+              CalculatorButton('3', updateDisplay),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CalculatorButton('.', updateDisplay),
+              CalculatorButton('0', updateDisplay),
+              CalculatorButton('DEL', updateDisplay),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CalculatorButton('(', updateDisplay),
+              CalculatorButton(')', updateDisplay),
+              CalculatorButton('CLR', updateDisplay),
+            ],
+          ),
+        ),
       ],
     );
   }
