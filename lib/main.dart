@@ -51,35 +51,50 @@ class _MyAppState extends State<MyApp> {
       title: 'Calculator',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          body1: TextStyle(fontSize: 20.0,  color: Colors.white54),
+          body2:  TextStyle(fontSize: 40.0, fontWeight: FontWeight.w700, color: Colors.white54),
+        ),
       ),
       home: Scaffold(
         // appBar: Display(displayText, answer),
-        appBar: AppBar(
-          title: Text('Calculator'),
-        ),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: Display(displayText, answer),
-              ),
-              Expanded(
-                flex: 5,
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 4,
-                      child: NumberPad(_updateDisplay),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: OperationPad(_updateDisplay),
-                    )
-                  ],
+        // appBar: AppBar(
+        //   title: Text('Calculator'),
+        //   toolbarOpacity: 0.0,
+        // ),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/chalkboard.jpg'),
+            ),
+          ),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Display(displayText, answer),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 5,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 4,
+                        child: NumberPad(_updateDisplay),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: OperationPad(_updateDisplay),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

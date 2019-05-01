@@ -9,7 +9,10 @@ class CalculatorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: FlatButton(
-        child: Text(text),
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.body1,
+        ),
         onPressed: () {
           updateDisplay(text);
         },

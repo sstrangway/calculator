@@ -9,8 +9,19 @@ class Display extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text(equation),
-        Text(answer),
+        SafeArea(
+          bottom: false,
+          child: Text(
+            equation,
+          ),
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Text(
+          answer,
+          style: Theme.of(context).textTheme.body2,
+        ),
       ],
     );
   }
